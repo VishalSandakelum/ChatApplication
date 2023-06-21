@@ -31,22 +31,15 @@ public class ClientController implements Initializable {
 
     public void sendbtnonAction(ActionEvent actionEvent) throws IOException {
         new Thread(() -> {
-        String message;
         String reply;
-        System.out.print("Client: ");
-        message = typetxt.getText();
             try {
-                dataOutputStream.writeUTF(message);
-                dataOutputStream.flush();
-                while (true) {
-                    message = dataInputStream.readUTF();
-                    System.out.println("Server: " + message);
-
-                    System.out.print("Client: ");
                     reply = typetxt.getText();
-                    dataOutputStream.writeUTF(reply);
-                    dataOutputStream.flush();
-                }
+                    if(reply!=null) {
+                        dataOutputStream.writeUTF(reply);
+                        dataOutputStream.flush();
+                        textarea.appendText("\n"+"Me :"+reply);
+                    }
+                    typetxt.clear();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -58,13 +51,29 @@ public class ClientController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         new Thread(() -> {
         try {
-            socket = new Socket("localhost", 3001);
+            if(socket==null) {
+                socket = new Socket("localhost", 3001);
+            }
             dataInputStream = new DataInputStream(socket.getInputStream());
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+            String message;
+            while (true) {
+                try {
+                    message = dataInputStream.readUTF();
+                    if(message!= null) {
+                        System.out.println("Server: " + message);
+                        textarea.appendText("\n"+"Server: " + message);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
         }).start();
     }
 

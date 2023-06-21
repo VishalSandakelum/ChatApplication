@@ -5,7 +5,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -26,23 +28,24 @@ public class ServerController implements Initializable {
      BufferedReader reader;
      DataOutputStream dataOutputStream;
      ServerSocket serverSocket;
+     Label label = new Label("Blue Label");
+     Pane pane;
 
     public void sendbtnonAction(ActionEvent actionEvent) throws IOException {
         new Thread(() -> {
-        String message="";
         String reply;
-        while (!message.equals("finish")) {
-            try {
-                message = dataInputStream.readUTF();
-                System.out.println("Client: " + message);
-                System.out.print("Server: ");
-                reply = reader.readLine();
-                dataOutputStream.writeUTF(reply);
-                dataOutputStream.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+                reply = typetxt.getText();
+                if(reply!=null) {
+                    try {
+                        dataOutputStream.writeUTF(reply);
+                        dataOutputStream.flush();
+                        textarea.appendText("\n"+"Me :"+reply);
+                        label.setText("ok");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                typetxt.clear();
         }).start();
     }
 
@@ -50,7 +53,9 @@ public class ServerController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         new Thread(() -> {
         try {
-            serverSocket = new ServerSocket(3001);
+            if(serverSocket==null) {
+                serverSocket = new ServerSocket(3001);
+            }
             socket = serverSocket.accept();
             dataInputStream = new DataInputStream(socket.getInputStream());
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
@@ -58,6 +63,19 @@ public class ServerController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+            String message="";
+            while (!message.equals("finish")) {
+                try {
+                    message = dataInputStream.readUTF();
+                    if(message!=null) {
+                        System.out.println("Client: " + message);
+                        textarea.appendText("\n"+"Client: " + message);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
         }).start();
     }
 }
