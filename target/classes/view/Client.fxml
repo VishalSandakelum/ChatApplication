@@ -1,22 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="605.0" prefWidth="592.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.chat.controller.ClientController">
+<AnchorPane prefHeight="607.0" prefWidth="567.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.chat.controller.ClientController">
    <children>
-      <TextField fx:id="typetxt" layoutX="87.0" layoutY="527.0" prefHeight="42.0" prefWidth="358.0" promptText="Enter to send the massage..." style="-fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-color: black;">
+      <Pane prefHeight="70.0" prefWidth="567.0" style="-fx-background-color: gray;">
+         <children>
+            <ImageView fitHeight="59.0" fitWidth="62.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/catnew.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="nametxt" layoutX="149.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client" visible="false" wrappingWidth="126.13671875">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="42.0" fitWidth="59.0" layoutX="465.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/telephonenew.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="394.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/video-cameranew.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="namtext" layoutX="97.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client" wrappingWidth="112.05389404296875">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="namset" layoutX="6.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="kasun,Nimal,Sadun" visible="false" wrappingWidth="555.7366638183594">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <TextField fx:id="typetxt" layoutX="105.0" layoutY="550.0" prefHeight="42.0" prefWidth="358.0" promptText="Enter to send the massage..." style="-fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-color: black;">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button fx:id="sendbtn" layoutX="457.0" layoutY="527.0" mnemonicParsing="false" onAction="#sendbtnonAction" prefHeight="42.0" prefWidth="47.0" style="-fx-background-color: whtransparentite; -fx-background-radius: 100px;">
+      <Button fx:id="sendbtn" layoutX="475.0" layoutY="550.0" mnemonicParsing="false" onAction="#sendbtnonAction" prefHeight="42.0" prefWidth="47.0" style="-fx-background-color: whtransparentite; -fx-background-radius: 100px;">
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -25,11 +62,290 @@
             </ImageView>
          </graphic>
       </Button>
-      <JFXTextArea fx:id="textarea" layoutX="49.0" layoutY="74.0" prefHeight="436.0" prefWidth="494.0" />
-      <Text layoutX="233.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLIENT" wrappingWidth="126.13671875">
-         <font>
-            <Font name="System Bold Italic" size="28.0" />
-         </font>
-      </Text>
+      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutX="65.0" layoutY="104.0" prefHeight="436.0" prefWidth="437.0" style="-fx-background-color: transparent; -fx-background-radius: 20px; -fx-border-color: black; -fx-border-radius: 10px; -fx-hbar-policy: NEVER; -fx-vbar-policy: NEVER;" vbarPolicy="NEVER">
+         <content>
+            <VBox fx:id="messagContainer" prefHeight="436.0" prefWidth="442.0" style="-fx-background-color: transparent; -fx-border-radius: 20px;" />
+         </content>
+      </ScrollPane>
+      <Button fx:id="emojibtn" layoutX="14.0" layoutY="550.0" mnemonicParsing="false" onAction="#emojibtnonAction" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/smilenew.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="Camerabtn" layoutX="58.0" layoutY="550.0" mnemonicParsing="false" onAction="#CamerabtnonAction" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/attach-filenew.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ScrollPane fx:id="pane" layoutX="14.0" layoutY="229.0" prefHeight="289.0" prefWidth="231.0" style="-fx-background-color: #737171; -fx-hbar-policy: NEVER; -fx-vbar-policy: NEVER; -fx-background-radius: 20px;" stylesheets="@../Css/Style.css" visible="false">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" opacity="0.86" prefHeight="289.0" prefWidth="231.0" style="-fx-background-color: #595858; -fx-background-radius: 20px;">
+               <children>
+                  <VBox layoutX="2.0" layoutY="7.0" prefHeight="268.0" prefWidth="231.0">
+                     <children>
+                        <HBox prefHeight="41.0" prefWidth="231.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#gringbigeyesOnAction" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button" stylesheets="@../Css/Style.css">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/gringbigeyesnew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#gringfacesmileonAction" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/gringfacesmilenew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="65.0" layoutY="10.0" mnemonicParsing="false" onAction="#smillyonAction" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/slightlysmilingnew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="120.0" layoutY="10.0" mnemonicParsing="false" onAction="#upsidedownonaction" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/upsidedownnew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="41.0" prefWidth="231.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#facewithtearsjoyonAction" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/facewithtearsjoynew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#rollingfacewithtearsjoyonAction" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/rollingthefloornew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="65.0" layoutY="10.0" mnemonicParsing="false" onAction="#vinkifaceonAction" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/winkingfacenew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="120.0" layoutY="10.0" mnemonicParsing="false" onAction="#savoringfoodonAction" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/savoringfoodnew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="57.0" prefHeight="41.0" prefWidth="231.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/starstrunknew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/kissnew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="65.0" layoutY="10.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/blowingkissnew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="120.0" layoutY="10.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/smileheartnew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="104.0" prefHeight="41.0" prefWidth="231.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/smilewithhearteyesnew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/gringfacesmilenew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="65.0" layoutY="10.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/slightlysmilingnew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="120.0" layoutY="10.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/upsidedownnew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="152.0" prefHeight="41.0" prefWidth="231.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/gringbigeyesnew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/gringfacesmilenew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="65.0" layoutY="10.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/slightlysmilingnew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="120.0" layoutY="10.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/upsidedownnew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="199.0" prefHeight="41.0" prefWidth="231.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/gringbigeyesnew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/gringfacesmilenew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="65.0" layoutY="10.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/slightlysmilingnew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="120.0" layoutY="10.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="hover-button">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/upsidedownnew.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <VBox fx:id="vbox" layoutX="138.0" layoutY="546.0" prefHeight="36.0" prefWidth="146.0" />
+      <Pane layoutY="70.0" prefHeight="27.0" prefWidth="567.0" style="-fx-background-color: DDDBDB;">
+         <children>
+            <Text fx:id="showNameBar" layoutX="6.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="555.7366638183594">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
